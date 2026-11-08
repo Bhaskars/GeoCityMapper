@@ -1,0 +1,3 @@
+# The database is built on Vercel (scripts/vercel-build.js); never upload local data/.
+data
+node_modules

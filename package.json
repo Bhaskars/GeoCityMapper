@@ -1,0 +1,15 @@
+{
+  "name": "citymapper-geocoding",
+  "version": "0.1.0",
+  "description": "Location search API built from GeoNames data",
+  "type": "module",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "download": "node src/download.js",
+    "build-db": "node src/build.js",
+    "start": "node src/server.js",
+    "test": "node --test test/"
+  }
+}

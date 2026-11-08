@@ -1,0 +1,16 @@
+{
+  "buildCommand": "node scripts/vercel-build.js",
+  "outputDirectory": "public",
+  "functions": {
+    "api/*.js": {
+      "includeFiles": "data/geocoding.sqlite",
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [
+    { "source": "/v1/search", "destination": "/api/search" },
+    { "source": "/v1/get/:id", "destination": "/api/get?id=:id" },
+    { "source": "/health", "destination": "/api/health" }
+  ]
+}

@@ -1,0 +1,6 @@
+2988507	Paris	Paris	Paris,Lutece,Parijs,Париж	48.85341	2.3488	P	PPLC	FR		11	75	751	75056	2138551		42	Europe/Paris	2024-01-01
+4717560	Paris	Paris	Paris	33.66094	-95.55551	P	PPLA2	US		TX	277			24782		179	America/Chicago	2024-01-01
+2988358	Parisot	Parisot	Parisot	44.2	1.6	P	PPL	FR		76	82			500		100	Europe/Paris	2024-01-01
+2996268	Île-de-France	Ile-de-France	Ile-de-France	48.5	2.5	A	ADM1	FR		11				12000000		0	Europe/Paris	2024-01-01
+2643743	London	London	London,Londres,Londra	51.50853	-0.12574	P	PPLC	GB		ENG	GLA			8961989		25	Europe/London	2024-01-01
+2644210	Liverpool	Liverpool	Liverpool	53.41058	-2.97794	P	PPLA2	GB		ENG	LIV			484578		20	Europe/London	2024-01-01

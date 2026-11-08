@@ -1,0 +1,5 @@
+1	2988507	en	Paris	1					
+2	2988507	fr	Paris	1					
+3	2643743	es	Londres	1					
+4	2643743	link	http://x						
+5	2988507	fr	Ville Lumière			1			
