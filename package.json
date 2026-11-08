@@ -11,7 +11,7 @@
   "scripts": {
     "download": "node src/download.js",
     "build-db": "node src/build.js",
-    "start": "node src/server.js",
+    "start": "node src/dev-server.js",
     "test": "node --test test/",
     "export-offline": "node src/export.js"
   }

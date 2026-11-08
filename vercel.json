@@ -1,4 +1,5 @@
 {
+  "framework": null,
   "buildCommand": "node scripts/vercel-build.js",
   "outputDirectory": "public",
   "functions": {
@@ -9,8 +10,17 @@
     }
   },
   "rewrites": [
-    { "source": "/v1/search", "destination": "/api/search" },
-    { "source": "/v1/get/:id", "destination": "/api/get?id=:id" },
-    { "source": "/health", "destination": "/api/health" }
+    {
+      "source": "/v1/search",
+      "destination": "/api/search"
+    },
+    {
+      "source": "/v1/get/:id",
+      "destination": "/api/get?id=:id"
+    },
+    {
+      "source": "/health",
+      "destination": "/api/health"
+    }
   ]
 }

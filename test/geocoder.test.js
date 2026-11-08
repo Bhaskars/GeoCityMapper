@@ -7,7 +7,7 @@ import { build } from '../src/build.js';
 import { openDb } from '../src/db.js';
 import { Geocoder } from '../src/search.js';
 import { normalize } from '../src/normalize.js';
-import { makeServer } from '../src/server.js';
+import { makeServer } from '../src/dev-server.js';
 
 let g, db;
 before(async () => {

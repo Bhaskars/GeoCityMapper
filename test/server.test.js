@@ -1,7 +1,7 @@
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { makeGeocoder } from './helpers.js';
-import { makeServer } from '../src/server.js';
+import { makeServer } from '../src/dev-server.js';
 
 let srv, base;
 before(async () => {
