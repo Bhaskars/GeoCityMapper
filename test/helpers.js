@@ -9,7 +9,7 @@ import { Geocoder } from '../src/search.js';
 export async function makeGeocoder(places, alts = []) {
   const dir = mkdtempSync(join(tmpdir(), 'geo-'));
   const row = (p) => [p.id, p.name, p.ascii ?? p.name, p.alts ?? '', p.lat ?? 0, p.lon ?? 0,
-    p.cls ?? 'P', p.code ?? 'PPL', p.cc ?? 'XX', '', p.a1 ?? '', p.a2 ?? '', p.a3 ?? '', '',
+    p.cls ?? 'P', p.code ?? 'PPL', (p.cc === null ? '' : p.cc ?? 'XX'), '', p.a1 ?? '', p.a2 ?? '', p.a3 ?? '', '',
     p.pop ?? 0, '', p.elev ?? '', p.tz ?? '', '2024-01-01'].join('\t');
   writeFileSync(join(dir, 'p.txt'), places.map(row).join('\n') + '\n');
   writeFileSync(join(dir, 'a.txt'), alts.map((a, i) =>

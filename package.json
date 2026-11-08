@@ -5,11 +5,14 @@
   "type": "module",
   "license": "UNLICENSED",
   "private": true,
-  "engines": { "node": ">=22.13" },
+  "engines": {
+    "node": ">=22.13"
+  },
   "scripts": {
     "download": "node src/download.js",
     "build-db": "node src/build.js",
     "start": "node src/server.js",
-    "test": "node --test test/"
+    "test": "node --test test/",
+    "export-offline": "node src/export.js"
   }
 }
