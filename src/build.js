@@ -20,12 +20,18 @@ export async function build(placesFile, altFile, outFile) {
   const db = openDb(outFile);
   db.exec('PRAGMA journal_mode = OFF; PRAGMA synchronous = OFF;');
   db.exec(SCHEMA);
+  // Names are collected unsorted in a scratch database, then copied in key order into the
+  // clustered `names` table (fast, and the final file has no free pages to VACUUM away).
+  const scratchFile = `${outFile}.scratch.tmp`;
+  if (existsSync(scratchFile)) rmSync(scratchFile);
+  db.exec(`ATTACH DATABASE '${scratchFile.replace(/'/g, "''")}' AS scratch;
+    CREATE TABLE scratch.names_raw (norm TEXT NOT NULL, lang TEXT NOT NULL, location_id INTEGER NOT NULL);`);
 
   const insLoc = db.prepare(`INSERT OR REPLACE INTO locations
     (id,name,latitude,longitude,elevation,feature_code,country_code,
      admin1_code,admin2_code,admin3_code,admin4_code,population,timezone)
     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`);
-  const insName = db.prepare('INSERT INTO names (norm,lang,location_id) VALUES (?,?,?)');
+  const insName = db.prepare('INSERT INTO scratch.names_raw (norm,lang,location_id) VALUES (?,?,?)');
   const ids = new Set();
   let count = 0;
 
@@ -66,6 +72,11 @@ export async function build(placesFile, altFile, outFile) {
     console.log(`Alternate names indexed: ${altInserted}`);
     if (wellFormed === 0) throw new Error(`${altFile} has no alternate-names rows; wrong or truncated file?`);
   }
+
+  db.exec(`INSERT INTO main.names (norm, lang, location_id)
+    SELECT DISTINCT norm, lang, location_id FROM scratch.names_raw ORDER BY norm, location_id, lang;
+    DETACH DATABASE scratch;`);
+  rmSync(scratchFile);
 
   // Resolve admin names from the ADM1..ADM4 rows themselves.
   db.exec(INDEXES);
